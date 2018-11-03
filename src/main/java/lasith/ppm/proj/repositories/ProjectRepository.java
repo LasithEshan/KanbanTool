@@ -1,0 +1,10 @@
+package lasith.ppm.proj.repositories;
+
+import lasith.ppm.proj.domain.Project;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProjectRepository extends CrudRepository<Project, Long> {
+
+}
