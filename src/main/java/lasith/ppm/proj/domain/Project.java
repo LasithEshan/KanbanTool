@@ -1,6 +1,10 @@
 package lasith.ppm.proj.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -11,11 +15,27 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Project Name cannot be null")
     private String projectName;
+
+    @NotNull(message = "project identifier cannot be null")
+    @Size(min = 4 , max = 5, message = "Identifier should be with max of 5 and a min of 4")
+    @Column(unique = true, updatable = false)
     private String projectIdentifier;
+
+    @NotNull(message = "description cannot be null")
     private String description;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date start_Date;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date end_date;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date updated_date;
+
+
 
     //Constructor
     public Project() {
