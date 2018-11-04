@@ -3,6 +3,7 @@ package lasith.ppm.proj.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -15,7 +16,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Project Name cannot be null")
+    @NotBlank(message = "Project Name cannot be empty")
     private String projectName;
 
     @NotNull(message = "project identifier cannot be null")
